@@ -10,6 +10,8 @@
     <tr onclick="location.href='/cafelist/{{ cafe.pk }}'">
       <td>{{ cafe.name }}</td>
       <td>{{ cafe.content }}</td>
+      <td>{{ cafe.published_date }}</td>
+      <td>{{ cafe.modified_date }}</td>
     </tr>
     {% endfor %}
   </table>

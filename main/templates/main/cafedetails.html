@@ -5,8 +5,14 @@
 </head>
 <body>
 	<h1>cafedetails</h1>
-	<p>{{cafe.name}}</p>
-	<p>{{cafe.content}}</p>
+	<p>{{ cafe.name }}</p>
+	<p>{{ cafe.content }}</p>
+    <p>
+        {{ cafe.published_date }}
+    </p>
+    <p>
+        {{ cafe.modified_date }}
+    </p>
     {% if cafe.mainphoto %}
       <img src="{{ cafe.mainphoto.url }}">
     {% endif %}
