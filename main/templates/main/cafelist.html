@@ -48,29 +48,29 @@
         <!-- cafe-list 시작 -->
         <div class="cafe-list">
             <div class="grid">
-              {% for i in cafelistobj %}
+              {% for cafe in cafes %}
                 <!-- 카페 1개 시작 -->
                 <section class="cafe-item">
                     <figure class="cafe-item-photo">
-                        {% if i.mainphoto %}
-                        <img src="{{ i.mainphoto.url }}" alt="">
+                        {% if cafe.mainphoto %}
+                        <img src="{{ cafe.mainphoto.url }}" alt="">
                         {% endif %}
                     </figure>
                     <div class="cafe-item-info">
-                        <a href="http://sample.jejucodingcamp.com/cafelist/{{i.pk}}" style="text-decoration:none"><h2>{{i.name}}</h2></a>
+                        <a href="/cafelist/{{cafe.pk}}" style="text-decoration:none"><h2>{{cafe.name}}</h2></a>
                         <p>개발자와 디자이너들을 위한 카페에요.</p>
                         <ul class="cafe-item-contact">
                             <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                {{i.locate}}
+                                <cafe class="fas fa-map-marker-alt"></cafe>
+                                {{cafe.location}}
                             </li>
                             <li>
-                                <i class="fas fa-phone"></i>
-                                {{i.phone}}
+                                <cafe class="fas fa-phone"></cafe>
+                                {{cafe.phone}}
                             </li>
                             <li>
-                                <i class="fab fa-instagram"></i>
-                                {{i.insta}}
+                                <cafe class="fab fa-instagram"></cafe>
+                                {{cafe.insta}}
                             </li>
                         </ul>
                     </div>

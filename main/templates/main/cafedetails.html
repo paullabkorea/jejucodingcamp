@@ -48,20 +48,20 @@
         <!-- 소개 페이지 내용 시작 -->
         <div class="grid">
         <header>
-                <h1>{{cafeobj.name}}</h1>
+                <h1>{{cafe.name}}</h1>
         <br>
         <div class="slideshow-container">
 
         <div class="mySlides fade">
           <div class="numbertext">1 / 2</div>
-          <img src="{{ cafeobj.mainphoto.url }}" style="height:50%">
+          <img src="{{ cafe.mainphoto.url }}" style="height:50%">
           <div class="text">Caption Text</div>
         </div>
 
-        {% if cafeobj.subphoto %}
+        {% if cafe.subphoto %}
         <div class="mySlides fade">
           <div class="numbertext">2 / 2</div>
-          <img src="{{ cafeobj.subphoto.url }}" style="height:100%">
+          <img src="{{ cafe.subphoto.url }}" style="height:100%">
           <div class="text">Caption Two</div>
         </div>
         {% endif %}
@@ -84,18 +84,18 @@
           <ul class="cafe-item-contact">
             <li>
                 <i class="fas fa-map-marker-alt"></i>
-                {{cafeobj.locate}}
+                {{cafe.location}}
             </li>
             <li>
                 <i class="fas fa-phone"></i>
-                {{cafeobj.phone}}
+                {{cafe.phone}}
             </li>
             <li>
                 <i class="fab fa-instagram"></i>
-                {{cafeobj.insta}}
+                {{cafe.insta}}
             </li>
             <li>
-              <p>{{cafeobj.content|linebreaks}}</p>
+              <p>{{cafe.content|linebreaks}}</p>
             </li>
           </ul>
         </div>
@@ -116,7 +116,7 @@
         });
 
         var marker = new google.maps.Marker({
-          position: {lat: {{cafeobj.lat}}, lng: {{cafeobj.lng}}},
+          position: {lat: {{cafe.lat}}, lng: {{cafe.lng}}},
           map: map
         });
 

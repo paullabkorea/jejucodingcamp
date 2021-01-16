@@ -4,6 +4,11 @@ from .models import Cafe
 def index(request):
     return render(request, 'main/index.html')
 
+def about(request):
+    return render(request, 'main/about.html')
+
+def write(request):
+    return render(request, 'main/write.html')
 
 def cafelist(request):
     cafes = Cafe.objects.all()

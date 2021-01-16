@@ -48,8 +48,7 @@
         <!-- jejumap-container 시작 -->
         <section class="jejumap-container">
             <div class="grid">
-                <form method="POST">
-                {% csrf_token %}
+                <form>
                 <header class="jejumap-header">
                     <h1 class="main-copy">지도에서 원하는 지역을 선택하세요!</h1>
                     <p>선택하지 않으면 전체 지역에서 찾습니다</p>
@@ -72,12 +71,12 @@
                             <label class="jejumap-item-title te-elem" for="check-area-3">애월읍</label>
                         </div>
                         <div class="jejumap-item" id="jejumap-item-jeju">
-                            <input type="checkbox" class="jejumap-check te-elem" id="check-area-0" data-city="Jcity" name="jejusi">
+                            <input type="checkbox" class="jejumap-check te-elem" id="check-area-0" data-city="Jcity" name="locations" value="jejusi">
                             <div class="mapshape"></div>
                             <label class="jejumap-item-title te-elem" for="check-area-0">제주시</label>
                         </div>
                         <div class="jejumap-item" id="jejumap-item-jocheon">
-                            <input type="checkbox" class="jejumap-check te-elem" id="check-area-4" data-city="notJcity" name="jocheon">
+                            <input type="checkbox" class="jejumap-check te-elem" id="check-area-4" data-city="notJcity" name="locations" value="jocheon">
                             <div class="mapshape"></div>
                             <label class="jejumap-item-title te-elem" for="check-area-4">조천읍</label>
                         </div>
