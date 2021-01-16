@@ -2,7 +2,10 @@ from django.shortcuts import render
 from .models import Cafe
 
 def index(request):
-    return render(request, 'main/index.html')
+    context = {
+        'locations' : Cafe.locations
+    }
+    return render(request, 'main/index.html', context)
 
 def about(request):
     return render(request, 'main/about.html')
@@ -11,11 +14,17 @@ def write(request):
     return render(request, 'main/write.html')
 
 def cafelist(request):
-    cafes = Cafe.objects.all()
+    selected_locations = request.GET.get('locations')
+    
+    if selected_locations:
+        cafes = Cafe.objects.filter(location__in=selected_locations)
+    else:
+        cafes = Cafe.objects.all()
     
     context = {
         'cafes': cafes
     }
+    
     return render(request, 'main/cafelist.html', {'cafes': cafes})
 
 def cafedetails(request, pk):
