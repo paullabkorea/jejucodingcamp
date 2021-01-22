@@ -21,7 +21,7 @@ class Cafe(models.Model):
     ]
     
     location = models.CharField(max_length=50, choices=locations)
-    lat = models.FloatField(null =True)
+    lat = models.FloatField(null=True)
     lng = models.FloatField(null=True)
     mainphoto = models.ImageField(blank=True, null=True)
     subphoto = models.ImageField(blank=True, null=True)

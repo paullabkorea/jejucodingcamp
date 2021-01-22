@@ -1,48 +1,7 @@
 {% extends "main/base.html" %}
+{% load static %}
 
 {% block content %}
-{% load static %}
-<body class="page-about">
-<div class="jejucafe-container">
-    <!-- global-header 시작 -->
-    <header class="global-header">
-        <div class="grid">
-            <button class="global-menu-btn">
-                <i class="fas fa-bars"></i>
-                <span class="btn-label">메뉴</span>
-            </button>
-            <a class="logo" href="/">
-                <img src="{% static 'images/logo.png' %}" alt="제주카페찾기">
-            </a>
-            <div class="global-menu">
-                <nav class="global-menu-nav">
-                    <ul>
-                        <li class="menu-item-about">
-                            <a href="/about">서비스 소개</a>
-                        </li>
-                        <li class="menu-item-list">
-                            <a href="/cafelist">카페들</a>
-                        </li>
-                    </ul>
-                    <a href="/write" class="add-cafe-btn">
-                        <i class="fas fa-plus"></i>
-                        <span class="btn-label">카페등록</span>
-                    </a>
-                </nav>
-                <form class="search-cafe-form text-input-and-btn">
-                    <div class="input-wrapper">
-                        <input type="search" placeholder="찾고 싶은 카페 이름">
-                    </div>
-                    <button class="icon-btn search-cafe-form-btn">
-                        <i class="fas fa-search"></i>
-                        <span class="btn-label">카페찾기</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </header>
-    <!-- global-header 끝 -->
-
     <!-- content-area 시작 -->
     <div class="content-area">
         <!-- 소개 페이지 내용 시작 -->
@@ -50,32 +9,32 @@
         <header>
                 <h1>{{cafe.name}}</h1>
         <br>
+        {% if cafe.mainphoto %}
         <div class="slideshow-container">
-
         <div class="mySlides fade">
+          {% if cafe.subphoto %}
           <div class="numbertext">1 / 2</div>
+          {% endif %}
           <img src="{{ cafe.mainphoto.url }}" style="height:50%">
-          <div class="text">Caption Text</div>
         </div>
 
         {% if cafe.subphoto %}
         <div class="mySlides fade">
           <div class="numbertext">2 / 2</div>
           <img src="{{ cafe.subphoto.url }}" style="height:100%">
-          <div class="text">Caption Two</div>
         </div>
-        {% endif %}
-
+            
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        </div>
         <br>
-
         <div style="text-align:center">
           <span class="dot" onclick="currentSlide(1)"></span>
           <span class="dot" onclick="currentSlide(2)"></span>
         </div>
+        {% endif %}
+        </div>
+        {% endif %}
+
         </header>
         <section class="content-section">
           <h2>개발자와 디자이너들을 위한 카페에요.</h2>
@@ -106,12 +65,13 @@
     </div>
 
     <div id="map"></div>
+    
+    
     <script>
-      var data = marker
       function initMap() {
         var jeju = {lat: 33.3616658, lng: 126.5204118};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
+          zoom: 10,
           center: jeju
         });
 
@@ -119,25 +79,9 @@
           position: {lat: {{cafe.lat}}, lng: {{cafe.lng}}},
           map: map
         });
-
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdKrZSsLIuxHuu59UCARaAvUtcmaMmBeU&callback=initMap">
-    </script>
-
-    <!-- global-footer 시작 -->
-    <footer class="global-footer">
-        <div class="grid">
-            <p class="copyright">
-                2018 &copy; 제주카페찾기
-            </p>
-        </div>
-    </footer>
-    <!-- global-footer 끝 -->
-  </div>
-    
-<!-- 뎃글 시작 -->
+<!-- 댓글 시작 -->
 <div id="disqus_thread"></div>
 <script>
 
@@ -159,7 +103,11 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
-
-<script src="{% static 'js/index.js' %}"></script>
-</body>
 {% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/index.js' %}"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4oNlGlJ5SIOsW9Pj6l-1opJvQfkJG9l0&callback=initMap">
+    </script>
+{% endblock js %}
